@@ -2,8 +2,44 @@
 <html>
 <head>
     <title>at least the sun is shinin' eh?</title>
+    
+    <meta charset="UTF-8">
+    <meta name="author" content="Starbachi">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
 </head>
-<body>
-    <h1>HELO HELHOEHLEOHE</h1>
+<body class="dark-mode">
+    <div class="root-div"> 
+        <h1>Hello!</h1>
+        <button class="theme-button" onclick="toggleLightDarkTheme()"></button>
+    </div>
+
+    <script>
+
+        /**========================================================================
+         *                           DARK / LIGHT THEME SWITCH
+         *========================================================================**/
+
+         let isDark = true;
+
+        function toggleLightDarkTheme() {
+            const body = document.body;
+            const themeButton = document.querySelector('.theme-button');
+            isDark = !isDark;
+            
+            if (isDark) {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                themeButton.style.filter = 'invert(1)'; // Invert icon for dark mode
+            } else {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+                themeButton.style.filter = 'invert(0)'; // Reset filter for light mode
+            }
+        }
+    </script>
 </body>
 </html>
