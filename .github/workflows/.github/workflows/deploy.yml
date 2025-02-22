@@ -1,0 +1,36 @@
+name: Deploy Tailwind to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Deploy directly from the main branch
+
+permissions:
+  contents: write  # Allows pushing changes to the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Tailwind CSS
+        run: npx tailwindcss -i ./css/input.css -o ./css/output.css --minify
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add --all
+          git commit -m "Auto-build Tailwind CSS" || echo "No changes to commit"
+          git push origin main
