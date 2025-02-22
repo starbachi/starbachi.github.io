@@ -8,22 +8,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
 </head>
 <body class="dark-mode">
-    <div class="root-div"> 
-        <h1>Hello!</h1>
-        <button class="theme-button" onclick="toggleLightDarkTheme()"></button>
+    <div class="flex flex-col h-screen bg-[#161314] p-[#E2E8DD]">
+        <!-- Top Bar -->
+        <div class="h-[5vh] w-full flex items-center justify-center">
+            <h1 class="text-[#FFFFFF]"></h1>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-grow flex items-center justify-center">
+            <div class="w-[40%] h-[70%] p-4 border border-[#E2E8DD] rounded-md flex flex-col min-w-[400px]">
+                <!-- Centered content goes here -->
+                <div class="chatbox flex flex-col flex-grow overflow-hidden">
+                    <div class="chatbox-body p-2 flex-grow overflow-auto">
+                        <!-- Messages will appear here -->
+                    </div>
+                    <div class="chatbox-footer p-2 rounded-b-md flex">
+                        <input type="text" class="flex-grow p-2 border border-[#E2E8DD] border-r-0 rounded-l-md outline-none" placeholder="Type a message...">
+                        <button class="bg-[#95A3A4] text-[#161314] p-2 rounded-r-md">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="h-[5vh] w-full flex items-center justify-center">
+            <p class="text-[#FFFFFF]">One must imagine to achieve greatness</p>
+        </div>
     </div>
 
     <script>
-
         /**========================================================================
          *                           DARK / LIGHT THEME SWITCH
          *========================================================================**/
 
-         let isDark = true;
+        let isDark = true;
 
         function toggleLightDarkTheme() {
             const body = document.body;
